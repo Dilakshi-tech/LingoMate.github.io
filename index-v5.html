@@ -1,0 +1,1282 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lingo Mate — Your Foreign Language Learning Companion</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body data-theme="pastel" data-role="student">
+
+  <!-- TOP HEADER -->
+  <header class="app-header">
+    <div class="header-brand">
+      <button id="mobile-menu-toggle" class="btn-icon" aria-label="Toggle menu">☰</button>
+      <div class="brand-logo">LINGO MATE</div>
+      <span class="brand-badge">Sri Lanka EdTech</span>
+    </div>
+
+    <div class="header-controls">
+      <!-- Active Language Switcher -->
+      <div class="header-lang-picker">
+        <span class="lang-flag" id="active-flag">🇫🇷</span>
+        <select id="header-lang-select" class="select-clean">
+          <option value="french">French (Français)</option>
+          <option value="german">German (Deutsch)</option>
+          <option value="japanese">Japanese (日本語)</option>
+          <option value="chinese">Chinese (中文)</option>
+          <option value="korean">Korean (한국어)</option>
+        </select>
+      </div>
+
+      <!-- Pathway Badge -->
+      <span class="pathway-pill" id="active-pathway-pill">G.C.E. O/L</span>
+
+      <!-- Role Switcher (Demo/Admin toggle) -->
+      <div class="role-switcher">
+        <button class="btn-role active" data-role="student">Student</button>
+        <button class="btn-role" data-role="admin">Admin Portal</button>
+      </div>
+
+      <!-- Live Gamification Counters -->
+      <div class="gamification-bar">
+        <div class="stat-chip streak-chip" title="Daily Learning Streak">
+          <span class="chip-icon">🔥</span>
+          <span id="header-streak-val">7 Days</span>
+        </div>
+        <div class="stat-chip xp-chip" title="Total XP Earned">
+          <span class="chip-icon">⚡</span>
+          <span id="header-xp-val">1,250 XP</span>
+        </div>
+      </div>
+
+      <!-- Profile Avatar Button -->
+      <button class="avatar-badge-btn" id="header-profile-btn" title="View Profile">
+        <span class="avatar-emoji" id="header-avatar-emoji">🎓</span>
+        <span class="avatar-name" id="header-user-name">Ayodya</span>
+      </button>
+    </div>
+  </header>
+
+  <!-- MAIN APP CONTAINER (3-AREA LAYOUT) -->
+  <div class="app-container">
+
+    <!-- AREA 1: LEFT NAVIGATION SIDEBAR -->
+    <aside class="app-sidebar" id="app-sidebar">
+      <div class="sidebar-header">
+        <div class="user-brief">
+          <div class="brief-avatar" id="sidebar-avatar-display">🎓</div>
+          <div class="brief-info">
+            <h4 id="sidebar-user-name">Ayodya Perera</h4>
+            <p id="sidebar-user-level">O/L French · Level 2</p>
+          </div>
+        </div>
+      </div>
+
+      <nav class="sidebar-nav">
+        <div class="nav-group-label">STUDENT DASHBOARD</div>
+        <ul class="nav-list">
+          <li><a href="#sec-home" class="nav-link active" data-sec="sec-home"><span class="nav-icon">🏠</span><span class="nav-label">1. Home</span></a></li>
+          <li><a href="#sec-languages" class="nav-link" data-sec="sec-languages"><span class="nav-icon">🌐</span><span class="nav-label">2. My Languages</span></a></li>
+          <li><a href="#sec-pathways" class="nav-link" data-sec="sec-pathways"><span class="nav-icon">🎓</span><span class="nav-label">3. Educational Pathways</span></a></li>
+          <li><a href="#sec-levels" class="nav-link" data-sec="sec-levels"><span class="nav-icon">🗺️</span><span class="nav-label">4. Learning Levels</span></a></li>
+          <li><a href="#sec-lessons" class="nav-link" data-sec="sec-lessons"><span class="nav-icon">📖</span><span class="nav-label">5. Lessons</span></a></li>
+          <li><a href="#sec-activities" class="nav-link" data-sec="sec-activities"><span class="nav-icon">🎯</span><span class="nav-label">6. Activities</span></a></li>
+          <li><a href="#sec-minigames" class="nav-link" data-sec="sec-minigames"><span class="nav-icon">🧩</span><span class="nav-label">7. Mini-Games</span></a></li>
+          <li><a href="#sec-library" class="nav-link" data-sec="sec-library"><span class="nav-icon">📚</span><span class="nav-label">8. Content Library</span></a></li>
+          <li><a href="#sec-exams" class="nav-link" data-sec="sec-exams"><span class="nav-icon">📝</span><span class="nav-label">9. Examination Centre</span></a></li>
+          <li><a href="#sec-culture" class="nav-link" data-sec="sec-culture"><span class="nav-icon">⛩️</span><span class="nav-label">10. Culture Corner</span></a></li>
+          <li><a href="#sec-dailytasks" class="nav-link" data-sec="sec-dailytasks"><span class="nav-icon">✅</span><span class="nav-label">11. Daily Tasks</span></a></li>
+          <li><a href="#sec-community" class="nav-link" data-sec="sec-community"><span class="nav-icon">🤝</span><span class="nav-label">12. Lingo Community</span></a></li>
+          <li><a href="#sec-progress" class="nav-link" data-sec="sec-progress"><span class="nav-icon">📊</span><span class="nav-label">13. My Progress</span></a></li>
+          <li><a href="#sec-achievements" class="nav-link" data-sec="sec-achievements"><span class="nav-icon">🏆</span><span class="nav-label">14. Achievements</span></a></li>
+          <li><a href="#sec-studygoals" class="nav-link" data-sec="sec-studygoals"><span class="nav-icon">⏱️</span><span class="nav-label">15. Study Goals</span></a></li>
+          <li><a href="#sec-profile" class="nav-link" data-sec="sec-profile"><span class="nav-icon">👤</span><span class="nav-label">16. My Profile</span></a></li>
+          <li><a href="#sec-settings" class="nav-link" data-sec="sec-settings"><span class="nav-icon">⚙️</span><span class="nav-label">17. Settings</span></a></li>
+        </ul>
+
+        <div class="nav-group-label admin-only-label">ADMINISTRATION</div>
+        <ul class="nav-list admin-only-list">
+          <li><a href="#sec-admin" class="nav-link nav-admin-link" data-sec="sec-admin"><span class="nav-icon">🛠️</span><span class="nav-label">18. Admin Interface</span></a></li>
+        </ul>
+      </nav>
+
+      <div class="sidebar-footer">
+        <button class="btn-sidebar-secondary" id="btn-quick-help">❓ Help & FAQ</button>
+      </div>
+    </aside>
+
+    <!-- AREA 2: MAIN CONTENT CANVAS -->
+    <main class="main-canvas" id="main-canvas">
+
+      <!-- SECTION 1: HOME DASHBOARD (18.4 Specifications) -->
+      <section id="sec-home" class="app-section active">
+        <!-- 1. Welcome Section -->
+        <div class="welcome-card card-pastel">
+          <div class="welcome-text">
+            <h2>Ayubowan & Welcome back, <span id="home-welcome-name">Ayodya</span>! 👋</h2>
+            <p>Ready to continue your G.C.E. O/L French language journey today? You're on a 7-day streak!</p>
+          </div>
+          <div class="welcome-avatar-box">
+            <span class="avatar-large" id="home-avatar-display">🎓</span>
+          </div>
+        </div>
+
+        <!-- 2. Four Summary Cards -->
+        <div class="metrics-grid">
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-icon">⚡</span>
+              <span class="stat-title">Total XP</span>
+            </div>
+            <div class="stat-value" id="home-card-xp">1,250</div>
+            <div class="stat-sub">+150 XP earned this week</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-icon">🔥</span>
+              <span class="stat-title">Current Streak</span>
+            </div>
+            <div class="stat-value" id="home-card-streak">7 Days</div>
+            <div class="stat-sub">Personal record: 14 days</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-icon">📖</span>
+              <span class="stat-title">Completed Lessons</span>
+            </div>
+            <div class="stat-value" id="home-card-lessons">18 / 40</div>
+            <div class="stat-sub">Level 2 in progress</div>
+          </div>
+
+          <div class="stat-card">
+            <div class="stat-header">
+              <span class="stat-icon">🎯</span>
+              <span class="stat-title">Overall Progress</span>
+            </div>
+            <div class="stat-value" id="home-card-progress">45%</div>
+            <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 45%;"></div></div>
+          </div>
+        </div>
+
+        <!-- 3. Prominent Continue Learning Card -->
+        <div class="continue-card">
+          <div class="continue-badge">CONTINUE LEARNING</div>
+          <div class="continue-details">
+            <h3 id="cont-title">French — Passé Composé with Avoir</h3>
+            <p>G.C.E. O/L Pathway · Level 2 Intermediate · Lesson 4</p>
+            <div class="progress-meta">
+              <span>Lesson Completion: 65%</span>
+              <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 65%;"></div></div>
+            </div>
+          </div>
+          <button class="btn-primary btn-large" id="btn-resume-lesson">Continue Lesson ▶</button>
+        </div>
+
+        <!-- 4. Daily Goals & 5. Daily Task Checklist -->
+        <div class="dashboard-split">
+          <div class="card-box">
+            <div class="card-box-header">
+              <h3>⏱️ Daily Goals</h3>
+              <span class="badge-status">Target: 20 Mins</span>
+            </div>
+            <p class="text-muted">Today's study goal progress:</p>
+            <div class="progress-meta margin-v">
+              <span>15 / 20 Minutes Completed (75%)</span>
+              <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 75%;"></div></div>
+            </div>
+          </div>
+
+          <div class="card-box">
+            <div class="card-box-header">
+              <h3>✅ Daily Tasks Checklist</h3>
+              <span class="badge-status" id="home-task-count">2 / 4 Completed</span>
+            </div>
+            <ul class="task-checklist" id="home-task-list">
+              <li class="task-item completed">
+                <input type="checkbox" checked disabled>
+                <span>Learn 5 new French verbs (+20 XP)</span>
+              </li>
+              <li class="task-item completed">
+                <input type="checkbox" checked disabled>
+                <span>Complete 1 Grammar Quiz (+30 XP)</span>
+              </li>
+              <li class="task-item">
+                <input type="checkbox" id="chk-task-3">
+                <label for="chk-task-3">Play Sentence Builder Challenge (+50 XP)</label>
+              </li>
+              <li class="task-item">
+                <input type="checkbox" id="chk-task-4">
+                <label for="chk-task-4">Listen to 1 Conversation audio (+25 XP)</label>
+              </li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- 6. Quick-Access Learning Cards -->
+        <h3 class="section-heading">⚡ Quick-Access Learning</h3>
+        <div class="quick-access-grid">
+          <div class="quick-card" data-action="quick-vocab">
+            <span class="quick-icon">🎴</span>
+            <h4>Vocabulary</h4>
+            <p>Flashcards & Sinhala/Tamil meanings</p>
+          </div>
+          <div class="quick-card" data-action="quick-grammar">
+            <span class="quick-icon">📝</span>
+            <h4>Grammar</h4>
+            <p>Rules, structures & sentence construction</p>
+          </div>
+          <div class="quick-card" data-action="quick-listening">
+            <span class="quick-icon">🎧</span>
+            <h4>Listening</h4>
+            <p>Native recordings & dictation</p>
+          </div>
+          <div class="quick-card" data-action="quick-speaking">
+            <span class="quick-icon">🎙️</span>
+            <h4>Speaking</h4>
+            <p>Pronunciation practice & prompts</p>
+          </div>
+          <div class="quick-card highlight-card" data-action="quick-sentence">
+            <span class="quick-icon">🧩</span>
+            <h4>Sentence Builder</h4>
+            <p>Drag-and-drop syntax practice</p>
+          </div>
+          <div class="quick-card" data-action="quick-games">
+            <span class="quick-icon">🎮</span>
+            <h4>Mini-Games</h4>
+            <p>10 Interactive games & challenges</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 2: MY LANGUAGES (18.5 Responsive Grid) -->
+      <section id="sec-languages" class="app-section">
+        <div class="section-header">
+          <h2>🌐 My Languages</h2>
+          <p>Manage your enrolled foreign languages. Progress is tracked independently for each language.</p>
+        </div>
+
+        <div class="language-grid">
+          <!-- French -->
+          <div class="lang-card theme-french selected">
+            <div class="lang-card-header">
+              <span class="lang-card-flag">🇫🇷</span>
+              <div>
+                <h3>French</h3>
+                <span class="lang-native">Français</span>
+              </div>
+              <span class="badge-active">ACTIVE</span>
+            </div>
+            <p>DELF examination preparation & Sri Lanka G.C.E. O/L and A/L syllabus.</p>
+            <div class="progress-meta">
+              <span>Overall Progress: Level 2 (45%)</span>
+              <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 45%;"></div></div>
+            </div>
+            <button class="btn-primary" onclick="selectLanguage('french')">Continue Learning ▶</button>
+          </div>
+
+          <!-- German -->
+          <div class="lang-card theme-german">
+            <div class="lang-card-header">
+              <span class="lang-card-flag">🇩🇪</span>
+              <div>
+                <h3>German</h3>
+                <span class="lang-native">Deutsch</span>
+              </div>
+            </div>
+            <p>Goethe-Zertifikat preparation, 4 grammatical cases (Nominativ, Akkusativ, Dativ, Genitiv).</p>
+            <div class="progress-meta">
+              <span>Overall Progress: Level 1 (20%)</span>
+              <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 20%;"></div></div>
+            </div>
+            <button class="btn-secondary" onclick="selectLanguage('german')">Start Learning ▶</button>
+          </div>
+
+          <!-- Japanese -->
+          <div class="lang-card theme-japanese">
+            <div class="lang-card-header">
+              <span class="lang-card-flag">🇯🇵</span>
+              <div>
+                <h3>Japanese</h3>
+                <span class="lang-native">日本語</span>
+              </div>
+            </div>
+            <p>Hiragana, Katakana, Kanji stroke order, Romaji support & JLPT N5-N1 preparation.</p>
+            <div class="progress-meta">
+              <span>Overall Progress: Level 1 (10%)</span>
+              <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 10%;"></div></div>
+            </div>
+            <button class="btn-secondary" onclick="selectLanguage('japanese')">Start Learning ▶</button>
+          </div>
+
+          <!-- Chinese -->
+          <div class="lang-card theme-chinese">
+            <div class="lang-card-header">
+              <span class="lang-card-flag">🇨🇳</span>
+              <div>
+                <h3>Chinese (Mandarin)</h3>
+                <span class="lang-native">中文</span>
+              </div>
+            </div>
+            <p>Pinyin with four tones, Simplified Hanzi characters, measure words & HSK preparation.</p>
+            <div class="progress-meta">
+              <span>Overall Progress: Level 1 (5%)</span>
+              <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 5%;"></div></div>
+            </div>
+            <button class="btn-secondary" onclick="selectLanguage('chinese')">Start Learning ▶</button>
+          </div>
+
+          <!-- Korean -->
+          <div class="lang-card theme-korean">
+            <div class="lang-card-header">
+              <span class="lang-card-flag">🇰🇷</span>
+              <div>
+                <h3>Korean</h3>
+                <span class="lang-native">한국어</span>
+              </div>
+            </div>
+            <p>Hangul alphabet, Syllable blocks (Batchim), honorifics & TOPIK I/II examination prep.</p>
+            <div class="progress-meta">
+              <span>Overall Progress: Level 1 (0%)</span>
+              <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 0%;"></div></div>
+            </div>
+            <button class="btn-secondary" onclick="selectLanguage('korean')">Start Learning ▶</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 3: EDUCATIONAL PATHWAYS (18.6 Specifications) -->
+      <section id="sec-pathways" class="app-section">
+        <div class="section-header">
+          <h2>🎓 Educational Pathways Selection</h2>
+          <p>Choose your study pathway. Independent progress records are maintained for each pathway.</p>
+        </div>
+
+        <div class="pathways-grid">
+          <!-- G.C.E. O/L -->
+          <div class="pathway-card selected" id="path-card-ol" onclick="selectPathway('ol')">
+            <div class="pathway-icon">🏫</div>
+            <h3>G.C.E. Ordinary Level (O/L)</h3>
+            <p>School-oriented curriculum aligned with Sri Lankan national general education syllabus. Grade-wise revision notes and school exam preparation.</p>
+            <ul class="feature-list">
+              <li>✓ National Exam Syllabus Materials</li>
+              <li>✓ Practice Questions & Revision Notes</li>
+              <li>✓ Grade 10 & 11 Targeted Modules</li>
+            </ul>
+            <button class="btn-primary">Selected Pathway ✓</button>
+          </div>
+
+          <!-- G.C.E. A/L -->
+          <div class="pathway-card" id="path-card-al" onclick="selectPathway('al')">
+            <div class="pathway-icon">🏛️</div>
+            <h3>G.C.E. Advanced Level (A/L)</h3>
+            <p>Advanced school-oriented learning with subject-specific vocabulary, complex grammar structures, essay writing, and past paper revision.</p>
+            <ul class="feature-list">
+              <li>✓ Advanced Literature & Composition</li>
+              <li>✓ Subject-Specific Vocabulary Lists</li>
+              <li>✓ National A/L Past Paper Drills</li>
+            </ul>
+            <button class="btn-secondary">Select Pathway</button>
+          </div>
+
+          <!-- BOTH -->
+          <div class="pathway-card" id="path-card-both" onclick="selectPathway('both')">
+            <div class="pathway-icon">🔄</div>
+            <h3>Both O/L & A/L Pathways</h3>
+            <p>Allows access to both O/L and A/L pathways simultaneously while maintaining completely independent progress tracking for each.</p>
+            <ul class="feature-list">
+              <li>✓ Complete Dual Access</li>
+              <li>✓ Independent Composite Progress Keys</li>
+              <li>✓ Switch Between Pathways Anytime</li>
+            </ul>
+            <button class="btn-secondary">Select Pathway</button>
+          </div>
+        </div>
+
+        <!-- Additional Pathways -->
+        <h3 class="section-heading margin-top-lg">🌐 Additional Learning Modes</h3>
+        <div class="pathways-grid">
+          <div class="card-box">
+            <h4>📖 Self-Learning Mode</h4>
+            <p>General communicative fluency for leisure, travel, or personal growth without exam constraints.</p>
+          </div>
+          <div class="card-box">
+            <h4>📜 International Exam Prep</h4>
+            <p>Direct preparation pathways for DELF, Goethe-Zertifikat, JLPT, HSK, and TOPIK certificates.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 4: LEARNING LEVELS (18.7 Visual Pathway) -->
+      <section id="sec-levels" class="app-section">
+        <div class="section-header">
+          <h2>🗺️ Learning Levels Pathway</h2>
+          <p>Unlock levels progressively by satisfying completion requirements. Review completed lessons anytime!</p>
+        </div>
+
+        <!-- Placement Test Banner -->
+        <div class="banner-box">
+          <div class="banner-text">
+            <h3>🎯 Take the Initial Placement Test</h3>
+            <p>Already have previous knowledge of French? Take a 10-minute placement test to unlock your appropriate starting level.</p>
+          </div>
+          <button class="btn-primary" id="btn-start-placement">Take Placement Test ▶</button>
+        </div>
+
+        <!-- Visual Connected Pathway -->
+        <div class="levels-pathway-list">
+
+          <!-- Level 1 -->
+          <div class="level-card status-completed">
+            <div class="level-badge-col">
+              <div class="level-number">01</div>
+              <span class="level-icon">📚</span>
+            </div>
+            <div class="level-content">
+              <div class="level-header-row">
+                <h3>Level 1 — Foundation</h3>
+                <span class="badge-status-completed">✓ COMPLETED</span>
+              </div>
+              <p>Basic vocabulary, alphabet, greetings, and introduction to fundamental sentence structures.</p>
+              <div class="progress-meta">
+                <span>10 / 10 Lessons Completed (100%)</span>
+                <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 100%;"></div></div>
+              </div>
+              <div class="level-actions">
+                <button class="btn-secondary btn-sm" onclick="openLevel(1)">Review Level 1</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Level 2 -->
+          <div class="level-card status-active">
+            <div class="level-badge-col">
+              <div class="level-number">02</div>
+              <span class="level-icon">💬</span>
+            </div>
+            <div class="level-content">
+              <div class="level-header-row">
+                <h3>Level 2 — Basic Communication</h3>
+                <span class="badge-status-active">ACTIVE / CURRENT</span>
+              </div>
+              <p>Everyday dialogue, present/past tenses, listening comprehension, and sentence builder exercises.</p>
+              <div class="progress-meta">
+                <span>8 / 10 Lessons Completed (80%)</span>
+                <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 80%;"></div></div>
+              </div>
+              <div class="level-actions">
+                <button class="btn-primary" onclick="openLevel(2)">Continue Level 2 ▶</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Level 3 -->
+          <div class="level-card status-locked">
+            <div class="level-badge-col">
+              <div class="level-number">03</div>
+              <span class="level-icon">🎓</span>
+            </div>
+            <div class="level-content">
+              <div class="level-header-row">
+                <h3>Level 3 — Intermediate</h3>
+                <span class="badge-status-locked">🔒 LOCKED</span>
+              </div>
+              <p>Complex sentence constructions, future tense, reading comprehension stories, and essay writing.</p>
+              <div class="progress-meta">
+                <span>Unlock requirement: Complete Level 2 Assessment</span>
+                <div class="progress-bar-bg"><div class="progress-bar-fill" style="width: 0%;"></div></div>
+              </div>
+              <div class="level-actions">
+                <button class="btn-secondary btn-sm" disabled>Locked</button>
+              </div>
+            </div>
+          </div>
+
+          <!-- Level 4 -->
+          <div class="level-card status-locked">
+            <div class="level-badge-col">
+              <div class="level-number">04</div>
+              <span class="level-icon">📖</span>
+            </div>
+            <div class="level-content">
+              <div class="level-header-row">
+                <h3>Level 4 — Upper Intermediate</h3>
+                <span class="badge-status-locked">🔒 LOCKED</span>
+              </div>
+              <p>Advanced grammar, subjunctive mood, native listening dictation, and exam paper strategy.</p>
+              <div class="progress-meta">
+                <span>Unlock requirement: Complete Level 3 Assessment</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Level 5 -->
+          <div class="level-card status-locked">
+            <div class="level-badge-col">
+              <div class="level-number">05</div>
+              <span class="level-icon">🏆</span>
+            </div>
+            <div class="level-content">
+              <div class="level-header-row">
+                <h3>Level 5 — Advanced & Professional</h3>
+                <span class="badge-status-locked">🔒 LOCKED</span>
+              </div>
+              <p>Fluency mastery, DELF B2 / Goethe B2 / JLPT N2 preparation, literature analysis & Level 5 hints in Sentence Builder.</p>
+              <div class="progress-meta">
+                <span>Unlock requirement: Complete Level 4 Assessment</span>
+              </div>
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- SECTION 5: LESSONS (18.8 & 18.9 Specifications) -->
+      <section id="sec-lessons" class="app-section">
+        <div class="section-header">
+          <h2>📖 Lessons Dashboard</h2>
+          <p>Level 2: Basic Communication — Select a lesson to view detailed explanations and practice exercises.</p>
+        </div>
+
+        <!-- Skill Area Filter Tabs -->
+        <div class="tabs-bar">
+          <button class="tab-btn active" data-tab="all">All Lessons</button>
+          <button class="tab-btn" data-tab="vocab">Vocabulary</button>
+          <button class="tab-btn" data-tab="grammar">Grammar</button>
+          <button class="tab-btn" data-tab="listening">Listening</button>
+          <button class="tab-btn" data-tab="speaking">Speaking</button>
+          <button class="tab-btn" data-tab="reading">Reading</button>
+          <button class="tab-btn" data-tab="writing">Writing</button>
+        </div>
+
+        <div class="lessons-grid" id="lessons-grid-container">
+          <!-- Dynamically populated via script.js -->
+        </div>
+
+        <!-- LESSON READER MODAL / VIEW -->
+        <div id="lesson-reader-modal" class="modal-overlay hidden">
+          <div class="modal-content modal-large">
+            <div class="modal-header">
+              <h3 id="lr-title">Lesson 4: Passé Composé with Avoir</h3>
+              <button class="modal-close" onclick="closeLessonReader()">✕</button>
+            </div>
+            <div class="modal-body">
+              <div class="lesson-meta-bar">
+                <span>Language: <strong id="lr-lang">French</strong></span>
+                <span>Pathway: <strong id="lr-path">G.C.E. O/L</strong></span>
+                <span>Level: <strong id="lr-level">Level 2</strong></span>
+              </div>
+
+              <div class="content-block">
+                <h4>1. Learning Objectives</h4>
+                <ul id="lr-objectives">
+                  <li>Understand how to conjugate past tenses using auxiliary verb 'avoir'.</li>
+                  <li>Form past participles for regular -er, -ir, and -re verbs.</li>
+                  <li>Construct daily past tense sentences with Sinhala/Tamil support.</li>
+                </ul>
+              </div>
+
+              <div class="content-block">
+                <h4>2. Simple English & Sinhala Explanation</h4>
+                <p id="lr-explanation">The <strong>Passé Composé</strong> is used to talk about completed past actions in French. In Sinhala, this corresponds to අතීත කාලය (Past Tense). It is formed by: <em>Subject + Auxiliary (Avoir) + Past Participle</em>.</p>
+                <div class="translation-box">
+                  <p><strong>Sinhala Support:</strong> ප්‍රංශ භාෂාවේ අතීත කාල වාක්‍ය සෑදීමට 'Avoir' ක්‍රියා පදය සහ අතීත කෘදන්තය (Past Participle) භාවිත කරයි.</p>
+                  <p><strong>Tamil Support:</strong> பிரெஞ்சு மொழியில் இறந்த கால வாக்கியங்களை உருவாக்க 'Avoir' வினைச்சொல் பயன்படுத்தப்படுகிறது.</p>
+                </div>
+              </div>
+
+              <div class="content-block">
+                <h4>3. Target Language Examples & Audio</h4>
+                <div class="example-audio-card">
+                  <div class="example-text">
+                    <p class="target-sentence">J'ai mangé un croissant ce matin.</p>
+                    <p class="english-translation">English: I ate a croissant this morning.</p>
+                    <p class="sinhala-translation">Sinhala: මම අද උදේ කෲසෝන් එකක් කෑවෙමි.</p>
+                  </div>
+                  <button class="btn-audio" onclick="playAudio('J'ai mangé un croissant ce matin.')">🔊 Listen</button>
+                </div>
+              </div>
+
+              <div class="content-block">
+                <h4>4. Practice Activity</h4>
+                <p>Construct the sentence: <em>"We finished our homework."</em></p>
+                <div class="mini-quiz-box">
+                  <button class="btn-quiz-option" onclick="answerMiniQuiz(true)">Nous avons fini nos devoirs.</button>
+                  <button class="btn-quiz-option" onclick="answerMiniQuiz(false)">Nous sommes finir nos devoirs.</button>
+                </div>
+                <div id="mini-quiz-feedback" class="feedback-box hidden"></div>
+              </div>
+
+            </div>
+            <div class="modal-footer">
+              <button class="btn-secondary" onclick="closeLessonReader()">Close</button>
+              <button class="btn-primary" onclick="markLessonComplete()">Mark as Completed (+50 XP) ✓</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 6: ACTIVITIES (18.10 Specifications) -->
+      <section id="sec-activities" class="app-section">
+        <div class="section-header">
+          <h2>🎯 Activities Dashboard</h2>
+          <p>Filter practice activities by skill category, difficulty level, and topic.</p>
+        </div>
+
+        <!-- Filters -->
+        <div class="filters-row">
+          <select id="filter-act-skill" class="select-clean">
+            <option value="all">All Skills</option>
+            <option value="vocabulary">Vocabulary</option>
+            <option value="grammar">Grammar</option>
+            <option value="listening">Listening</option>
+            <option value="speaking">Speaking</option>
+            <option value="reading">Reading</option>
+            <option value="writing">Writing</option>
+          </select>
+
+          <select id="filter-act-diff" class="select-clean">
+            <option value="all">All Difficulties</option>
+            <option value="easy">Easy</option>
+            <option value="medium">Medium</option>
+            <option value="hard">Hard</option>
+          </select>
+
+          <span class="text-muted">Showing 12 Functional Activities</span>
+        </div>
+
+        <div class="activities-grid" id="activities-grid-container">
+          <!-- Activity Cards rendered dynamically -->
+        </div>
+      </section>
+
+      <!-- SECTION 7: MINI-GAMES & SENTENCE BUILDER (PART 9 & PART 10 & 18.11 & 18.12) -->
+      <section id="sec-minigames" class="app-section">
+        <div class="section-header">
+          <h2>🧩 Mini-Games & Sentence Builder Dashboard</h2>
+          <p>Interactive games for interactive language practice. Select a game to play!</p>
+        </div>
+
+        <!-- 10 Mini Game Grid -->
+        <div class="games-grid">
+          <!-- Featured Sentence Builder Card -->
+          <div class="game-card featured-game-card">
+            <div class="game-card-badge">FEATURED MANDATORY GAME</div>
+            <div class="game-icon">🧩</div>
+            <h3>1. Sentence Builder Engine</h3>
+            <p>Database-driven drag-and-drop sentence construction. Supports word segmentation, Sinhala/Tamil support, and Level 5 hints.</p>
+            <div class="game-meta">
+              <span>Difficulty: Adaptive</span>
+              <span>Reward: +50 XP</span>
+            </div>
+            <button class="btn-primary btn-block" onclick="launchGame('sentence-builder')">PLAY SENTENCE BUILDER ▶</button>
+          </div>
+
+          <div class="game-card">
+            <div class="game-icon">🎴</div>
+            <h3>2. Vocabulary Challenge</h3>
+            <p>Speed matching of target words with English & Sinhala meanings.</p>
+            <button class="btn-secondary btn-block" onclick="launchGame('vocab-challenge')">Play Game ▶</button>
+          </div>
+
+          <div class="game-card">
+            <div class="game-icon">🔗</div>
+            <h3>3. Word Matching</h3>
+            <p>Pair target language terms with their translated counterparts.</p>
+            <button class="btn-secondary btn-block" onclick="launchGame('word-match')">Play Game ▶</button>
+          </div>
+
+          <div class="game-card">
+            <div class="game-icon">🎧</div>
+            <h3>4. Listening Challenge</h3>
+            <p>Audio dictation and pronunciation identification exercises.</p>
+            <button class="btn-secondary btn-block" onclick="launchGame('listening-challenge')">Play Game ▶</button>
+          </div>
+
+          <div class="game-card">
+            <div class="game-icon">🎌</div>
+            <h3>5. Character Recognition</h3>
+            <p>Hiragana, Katakana, Kanji, Hanzi, and Hangul script drills.</p>
+            <button class="btn-secondary btn-block" onclick="launchGame('char-recognition')">Play Game ▶</button>
+          </div>
+
+          <div class="game-card">
+            <div class="game-icon">📝</div>
+            <h3>6. Grammar Challenge</h3>
+            <p>Tense formation, prepositions, and grammatical case quizzes.</p>
+            <button class="btn-secondary btn-block" onclick="launchGame('grammar-challenge')">Play Game ▶</button>
+          </div>
+
+          <div class="game-card">
+            <div class="game-icon">🧠</div>
+            <h3>7. Memory Cards</h3>
+            <p>Classic memory card flipping with target language audio playback.</p>
+            <button class="btn-secondary btn-block" onclick="launchGame('memory-cards')">Play Game ▶</button>
+          </div>
+
+          <div class="game-card">
+            <div class="game-icon">⚡</div>
+            <h3>8. Speed Quiz</h3>
+            <p>Timed multiple choice questions to build quick recognition.</p>
+            <button class="btn-secondary btn-block" onclick="launchGame('speed-quiz')">Play Game ▶</button>
+          </div>
+
+          <div class="game-card">
+            <div class="game-icon">📅</div>
+            <h3>9. Daily Challenge</h3>
+            <p>Daily curated mix of vocabulary, listening, and sentence tasks.</p>
+            <button class="btn-secondary btn-block" onclick="launchGame('daily-challenge')">Play Game ▶</button>
+          </div>
+
+          <div class="game-card">
+            <div class="game-icon">🏅</div>
+            <h3>10. Level Completion Challenge</h3>
+            <p>Comprehensive assessment test to unlock the next learning level.</p>
+            <button class="btn-secondary btn-block" onclick="launchGame('level-challenge')">Play Game ▶</button>
+          </div>
+        </div>
+
+        <!-- GAMEPLAY CANVAS MODAL / INTERFACE -->
+        <div id="gameplay-modal" class="modal-overlay hidden">
+          <div class="modal-content modal-large">
+            <div class="modal-header">
+              <h3 id="game-modal-title">Sentence Builder Game</h3>
+              <button class="modal-close" onclick="closeGameplayModal()">✕</button>
+            </div>
+            <div class="modal-body">
+              
+              <!-- SENTENCE BUILDER INTERFACE (18.12) -->
+              <div id="sentence-builder-engine">
+                <div class="sb-header-bar">
+                  <span>Language: <strong id="sb-lang">French</strong></span>
+                  <span>Pathway: <strong id="sb-path">G.C.E. O/L</strong></span>
+                  <span>Question: <strong id="sb-q-num">1 / 5</strong></span>
+                  <span>Score: <strong id="sb-score">0 XP</strong></span>
+                </div>
+
+                <!-- Prominent Guide Card -->
+                <div class="sb-guide-card">
+                  <div class="sb-guide-label">ARRANGE TARGET SENTENCE FOR THIS MEANING:</div>
+                  <h3 id="sb-english-prompt">"I ate a croissant this morning."</h3>
+                  <p id="sb-sinhala-prompt" class="text-muted">Sinhala: මම අද උදේ කෲසෝන් එකක් කෑවෙමි.</p>
+                </div>
+
+                <!-- Target Drop Zone Area -->
+                <div class="sb-drop-zone" id="sb-drop-zone">
+                  <span class="sb-placeholder" id="sb-placeholder">Tap or drag target words here to construct sentence...</span>
+                </div>
+
+                <!-- Source Shuffled Component Tiles -->
+                <div class="sb-tiles-container" id="sb-tiles-container">
+                  <!-- Word Tiles injected via script.js -->
+                </div>
+
+                <!-- Action & Hint Controls -->
+                <div class="sb-controls">
+                  <button class="btn-secondary" onclick="resetSentenceBuilder()">🔄 Reset</button>
+                  <button class="btn-secondary" onclick="requestSentenceHint()">💡 Request Hint</button>
+                  <button class="btn-secondary" onclick="playSentenceAudio()">🔊 Audio</button>
+                  <button class="btn-primary" onclick="checkSentenceAnswer()">Check Answer ✓</button>
+                </div>
+
+                <!-- Hint Banner -->
+                <div id="sb-hint-banner" class="hint-banner hidden"></div>
+
+                <!-- Feedback Display -->
+                <div id="sb-feedback" class="feedback-box hidden"></div>
+              </div>
+
+              <!-- GENERIC GAMEPLAY CANVAS FOR OTHER 9 GAMES -->
+              <div id="generic-game-engine" class="hidden">
+                <div class="card-box text-center">
+                  <h3 id="gen-game-title">Game Arena</h3>
+                  <div id="gen-game-content" class="margin-v"></div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 8: CONTENT LIBRARY (8.1 - 8.5) -->
+      <section id="sec-library" class="app-section">
+        <div class="section-header">
+          <h2>📚 Content Library & Educational Resources</h2>
+          <p>Explore resources categorized by skill type outside the main 5-level structure.</p>
+        </div>
+
+        <div class="grid-2">
+          <div class="card-box">
+            <h3>🎴 Vocabulary Library</h3>
+            <p>Topic-based word collections with Sinhala/Tamil meanings and audio.</p>
+            <button class="btn-secondary btn-sm" onclick="alert('Opening Vocab Library')">Explore Vocabulary</button>
+          </div>
+          <div class="card-box">
+            <h3>🎧 Listening Library</h3>
+            <p>Native-speaker conversations, short podcasts, and dictation exercises.</p>
+            <button class="btn-secondary btn-sm" onclick="alert('Opening Listening Library')">Listen Audio</button>
+          </div>
+          <div class="card-box">
+            <h3>🎬 Video Learning Library</h3>
+            <p>Grammar video tutorials, pronunciation guides, and cultural documentaries.</p>
+            <button class="btn-secondary btn-sm" onclick="alert('Opening Video Library')">Watch Videos</button>
+          </div>
+          <div class="card-box">
+            <h3>📖 Reading Library</h3>
+            <p>Graded short stories, dialogues, news articles, and comprehension questions.</p>
+            <button class="btn-secondary btn-sm" onclick="alert('Opening Reading Library')">Read Stories</button>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 9: EXAMINATION CENTRE (8.7 & DELF, Goethe, JLPT, HSK, TOPIK) -->
+      <section id="sec-exams" class="app-section">
+        <div class="section-header">
+          <h2>📝 Examination Centre</h2>
+          <p>Official exam structures, past paper practice, and preparation techniques for national & international certifications.</p>
+        </div>
+
+        <div class="banner-box">
+          <h4>📌 Verified Information Notice</h4>
+          <p>Official syllabus requirements are verified separately for each language. Sample practice questions are clearly designated for student practice.</p>
+        </div>
+
+        <div class="tabs-bar">
+          <button class="tab-btn active" data-exam="delf">French: DELF</button>
+          <button class="tab-btn" data-exam="goethe">German: Goethe</button>
+          <button class="tab-btn" data-exam="jlpt">Japanese: JLPT</button>
+          <button class="tab-btn" data-exam="hsk">Chinese: HSK</button>
+          <button class="tab-btn" data-exam="topik">Korean: TOPIK</button>
+        </div>
+
+        <div class="card-box margin-top-md" id="exam-detail-box">
+          <h3 id="exam-title">French — DELF A1 / A2 Examination Preparation</h3>
+          <p id="exam-desc">Covers Listening Comprehension (Compréhension de l'oral), Reading (Compréhension des écrits), Writing (Production écrite), and Speaking (Production orale).</p>
+          <div class="grid-3 margin-top-md">
+            <div class="stat-card">
+              <h4>Exam Structure</h4>
+              <p>4 Component Papers · 100 Marks Total</p>
+            </div>
+            <div class="stat-card">
+              <h4>Practice Drills</h4>
+              <p>25 Mock Papers Available</p>
+            </div>
+            <div class="stat-card">
+              <h4>Vocabulary Bank</h4>
+              <p>1,200 Exam Specific Terms</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 10: CULTURE CORNER (8.6 Specifications) -->
+      <section id="sec-culture" class="app-section">
+        <div class="section-header">
+          <h2>⛩️ Culture Corner</h2>
+          <p>Explore traditional customs, food, etiquette, and cultural comparisons with Sri Lanka.</p>
+        </div>
+
+        <div class="culture-grid">
+          <div class="card-box theme-french">
+            <h3>🇫🇷 France & French Culture</h3>
+            <p>Bastille Day, French cuisine, formal etiquette (Vous vs Tu), and comparisons with Sri Lankan hospitality.</p>
+          </div>
+          <div class="card-box theme-german">
+            <h3>🇩🇪 Germany & German Culture</h3>
+            <p>Oktoberfest, efficiency customs, punctuality, Christmas markets, and German educational systems.</p>
+          </div>
+          <div class="card-box theme-japanese">
+            <h3>🇯🇵 Japan & Japanese Culture</h3>
+            <p>Matsuri festivals, Tea ceremonies, bowing etiquette, Omotenashi, and respectful language levels.</p>
+          </div>
+          <div class="card-box theme-chinese">
+            <h3>🇨🇳 China & Chinese Culture</h3>
+            <p>Spring Festival (Chinese New Year), Tea traditions, filial piety, and calligraphy arts.</p>
+          </div>
+          <div class="card-box theme-korean">
+            <h3>🇰🇷 South Korea & Korean Culture</h3>
+            <p>Chuseok festival, Hanbok, bowing traditions, honorific speech levels, and modern K-culture.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 11: DAILY TASKS (12.1 & 18.13 Specifications) -->
+      <section id="sec-dailytasks" class="app-section">
+        <div class="section-header">
+          <h2>✅ Daily Tasks Dashboard</h2>
+          <p>Personalized tasks generated based on your current level, weak areas, and study targets.</p>
+        </div>
+
+        <div class="stat-card margin-bottom-md">
+          <div class="stat-header">
+            <h3>Today's Completion Goal</h3>
+            <span class="badge-active">2 / 4 Completed</span>
+          </div>
+          <div class="progress-bar-bg margin-v"><div class="progress-bar-fill" style="width: 50%;"></div></div>
+          <p class="text-muted">Total Available XP Today: <strong>+125 XP</strong></p>
+        </div>
+
+        <div class="task-timeline-list" id="daily-tasks-timeline">
+          <!-- Populated by script.js -->
+        </div>
+      </section>
+
+      <!-- SECTION 12: LINGO COMMUNITY (PART 15 Specifications) -->
+      <section id="sec-community" class="app-section">
+        <div class="section-header">
+          <h2>🤝 Lingo Community & Shared Resources</h2>
+          <p>Collaborate, share revision notes, create flashcards, ask questions, and practice speaking.</p>
+        </div>
+
+        <div class="banner-box">
+          <h4>🛡️ Moderation & Quality Safeguards</h4>
+          <p>All student-submitted notes, flashcards, and quizzes are reviewed by teachers before public publishing. Student content is kept strictly separate from official curriculum materials.</p>
+        </div>
+
+        <div class="tabs-bar">
+          <button class="tab-btn active" data-comm="notes">My Notes</button>
+          <button class="tab-btn" data-comm="flashcards">Flashcard Creator</button>
+          <button class="tab-btn" data-comm="writing">Writing Corner</button>
+          <button class="tab-btn" data-comm="forum">Question Forum</button>
+        </div>
+
+        <div class="card-box margin-top-md">
+          <h3>✍️ Share Personal Study Notes</h3>
+          <div class="form-group">
+            <label>Note Title:</label>
+            <input type="text" id="comm-note-title" class="input-clean" placeholder="e.g., French Irregular Verbs Summary">
+          </div>
+          <div class="form-group">
+            <label>Note Content (Markdown supported):</label>
+            <textarea id="comm-note-body" class="input-clean" rows="4" placeholder="Write your revision notes here..."></textarea>
+          </div>
+          <button class="btn-primary" onclick="submitCommunityNote()">Submit for Moderation Review</button>
+        </div>
+      </section>
+
+      <!-- SECTION 13: MY PROGRESS (13.1 & 18.14 Specifications) -->
+      <section id="sec-progress" class="app-section">
+        <div class="section-header">
+          <h2>📊 My Progress & Analytics</h2>
+          <p>Detailed breakdown of your study performance, quiz scores, and isolated pathway stats.</p>
+        </div>
+
+        <div class="banner-box">
+          <h4>🔒 Isolated Progress Engine Notice</h4>
+          <p>Progress key: <strong id="progress-key-display">User_101 + French + OL + Level_2</strong>. Pathway progress for G.C.E. O/L and A/L are tracked independently.</p>
+        </div>
+
+        <div class="metrics-grid">
+          <div class="stat-card">
+            <h4>Vocabulary Learned</h4>
+            <div class="stat-value">320 Words</div>
+          </div>
+          <div class="stat-card">
+            <h4>Quiz Accuracy</h4>
+            <div class="stat-value">88%</div>
+          </div>
+          <div class="stat-card">
+            <h4>Study Hours</h4>
+            <div class="stat-value">14.5 Hrs</div>
+          </div>
+          <div class="stat-card">
+            <h4>Sentence Builder Score</h4>
+            <div class="stat-value">450 Pts</div>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 14: ACHIEVEMENTS (13.2 & 18.15 Specifications) -->
+      <section id="sec-achievements" class="app-section">
+        <div class="section-header">
+          <h2>🏆 Achievements & Badges</h2>
+          <p>Earn badges for consistent study habits, completing levels, and mastering skills.</p>
+        </div>
+
+        <div class="badge-grid">
+          <div class="badge-card unlocked">
+            <div class="badge-icon">🏁</div>
+            <h4>First Lesson</h4>
+            <p>Completed your first language lesson.</p>
+            <span class="badge-date">Earned Nov 12</span>
+          </div>
+
+          <div class="badge-card unlocked">
+            <div class="badge-icon">🎴</div>
+            <h4>Vocabulary Explorer</h4>
+            <p>Learned over 100 vocabulary words.</p>
+            <span class="badge-date">Earned Nov 18</span>
+          </div>
+
+          <div class="badge-card unlocked">
+            <div class="badge-icon">🧩</div>
+            <h4>Sentence Builder Master</h4>
+            <p>Successfully built 25 target sentences.</p>
+            <span class="badge-date">Earned Nov 22</span>
+          </div>
+
+          <div class="badge-card unlocked">
+            <div class="badge-icon">🔥</div>
+            <h4>7-Day Streak</h4>
+            <p>Maintained a daily study streak for 7 days.</p>
+            <span class="badge-date">Earned Nov 24</span>
+          </div>
+
+          <div class="badge-card locked">
+            <div class="badge-icon">🎧</div>
+            <h4>Listening Champion</h4>
+            <p>Complete 15 listening dictation challenges.</p>
+            <span class="text-muted">Progress: 8 / 15</span>
+          </div>
+
+          <div class="badge-card locked">
+            <div class="badge-icon">🌍</div>
+            <h4>Multi-Language Learner</h4>
+            <p>Reach Level 2 in two or more languages.</p>
+            <span class="text-muted">Progress: 1 / 2</span>
+          </div>
+        </div>
+      </section>
+
+      <!-- SECTION 15: STUDY GOALS (12.2 & 18.17 Specifications) -->
+      <section id="sec-studygoals" class="app-section">
+        <div class="section-header">
+          <h2>⏱️ Study Goals Configuration</h2>
+          <p>Set daily study targets, streak preferences, and reminder schedules.</p>
+        </div>
+
+        <div class="card-box form-card">
+          <div class="form-group">
+            <label>Daily Study Duration (Minutes):</label>
+            <select id="goal-duration" class="select-clean">
+              <option value="10">10 Minutes (Casual)</option>
+              <option value="20" selected>20 Minutes (Recommended)</option>
+              <option value="30">30 Minutes (Intensive)</option>
+              <option value="60">60 Minutes (Exam Master)</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Daily Target Vocabulary Words:</label>
+            <input type="number" id="goal-vocab" class="input-clean" value="5" min="1" max="50">
+          </div>
+
+          <div class="form-group">
+            <label>Target Study Days per Week:</label>
+            <select id="goal-days" class="select-clean">
+              <option value="3">3 Days / Week</option>
+              <option value="5">5 Days / Week</option>
+              <option value="7" selected>Everyday (7 Days)</option>
+            </select>
+          </div>
+
+          <button class="btn-primary" onclick="saveStudyGoals()">Save Goal Settings ✓</button>
+        </div>
+      </section>
+
+      <!-- SECTION 16: MY PROFILE (PART 14 & 18.16 Specifications) -->
+      <section id="sec-profile" class="app-section">
+        <div class="section-header">
+          <h2>👤 My Profile & Illustrated Avatar Picker</h2>
+          <p>Customize your profile and choose a culturally inspired avatar.</p>
+        </div>
+
+        <div class="card-box">
+          <h3>Choose Your Avatar Character</h3>
+          <p class="text-muted">Select any illustrated character avatar without gender labels or restrictions:</p>
+          <div class="avatar-collection-grid">
+            <button class="avatar-option-btn selected" onclick="selectAvatar('🎓')"><span class="avatar-emoji">🎓</span></button>
+            <button class="avatar-option-btn" onclick="selectAvatar('🧑‍🎓')"><span class="avatar-emoji">🧑‍🎓</span></button>
+            <button class="avatar-option-btn" onclick="selectAvatar('👩‍🏫')"><span class="avatar-emoji">👩‍🏫</span></button>
+            <button class="avatar-option-btn" onclick="selectAvatar('⛩️')"><span class="avatar-emoji">⛩️</span></button>
+            <button class="avatar-option-btn" onclick="selectAvatar('🇫🇷')"><span class="avatar-emoji">🇫🇷</span></button>
+            <button class="avatar-option-btn" onclick="selectAvatar('🇩🇪')"><span class="avatar-emoji">🇩🇪</span></button>
+            <button class="avatar-option-btn" onclick="selectAvatar('🇯🇵')"><span class="avatar-emoji">🇯🇵</span></button>
+            <button class="avatar-option-btn" onclick="selectAvatar('🇨🇳')"><span class="avatar-emoji">🇨🇳</span></button>
+            <button class="avatar-option-btn" onclick="selectAvatar('🇰🇷')"><span class="avatar-emoji">🇰🇷</span></button>
+          </div>
+        </div>
+
+        <div class="card-box margin-top-md">
+          <h3>Student Profile Details</h3>
+          <div class="form-group">
+            <label>Student Full Name:</label>
+            <input type="text" id="prof-name-input" class="input-clean" value="Ayodya Perera">
+          </div>
+          <div class="form-group">
+            <label>Preferred Explanation Language:</label>
+            <select id="prof-lang-exp" class="select-clean">
+              <option value="en" selected>English with Sinhala/Tamil support</option>
+              <option value="si">Sinhala Primary (සිංහල)</option>
+              <option value="ta">Tamil Primary (தமிழ்)</option>
+            </select>
+          </div>
+          <button class="btn-primary" onclick="saveProfileDetails()">Save Profile Details ✓</button>
+        </div>
+      </section>
+
+      <!-- SECTION 17: SETTINGS -->
+      <section id="sec-settings" class="app-section">
+        <div class="section-header">
+          <h2>⚙️ Application Settings</h2>
+          <p>Configure notifications, sound effects, and privacy preferences.</p>
+        </div>
+
+        <div class="card-box">
+          <div class="form-group">
+            <label><input type="checkbox" checked> Enable Audio Pronunciation Autoplay</label>
+          </div>
+          <div class="form-group">
+            <label><input type="checkbox" checked> Daily Study Reminder Notifications</label>
+          </div>
+          <div class="form-group">
+            <label><input type="checkbox" checked> Public Profile Leaderboard Visibility</label>
+          </div>
+          <button class="btn-primary" onclick="alert('Settings saved!')">Save Preferences</button>
+        </div>
+      </section>
+
+      <!-- SECTION 18: ADMINISTRATOR DASHBOARD (PART 16 & 18.18 Specifications) -->
+      <section id="sec-admin" class="app-section">
+        <div class="admin-header-banner">
+          <h2>🛠️ Administrator & Content Management Portal</h2>
+          <p>Manage users, official lessons, sentence database entries, daily tasks, and content approvals.</p>
+        </div>
+
+        <!-- Admin Overview Metrics -->
+        <div class="metrics-grid margin-v">
+          <div class="stat-card">
+            <h4>Registered Students</h4>
+            <div class="stat-value">1,420</div>
+          </div>
+          <div class="stat-card">
+            <h4>Active Teachers</h4>
+            <div class="stat-value">28</div>
+          </div>
+          <div class="stat-card">
+            <h4>Published Sentences</h4>
+            <div class="stat-value">350</div>
+          </div>
+          <div class="stat-card">
+            <h4>Pending Approvals</h4>
+            <div class="stat-value">12</div>
+          </div>
+        </div>
+
+        <!-- Sentence Database Editor & Preview (16.7 & 18.18) -->
+        <div class="card-box margin-top-md">
+          <h3>🧩 Sentence Database Manager with Student Preview</h3>
+          <p class="text-muted">Create, edit, and approve target language sentences for the Sentence Builder Engine:</p>
+
+          <div class="grid-2 margin-top-md">
+            <!-- Editor Column -->
+            <div class="form-column">
+              <h4>Sentence Entry Form</h4>
+              <div class="form-group">
+                <label>Language:</label>
+                <select id="admin-sent-lang" class="select-clean">
+                  <option value="french">French</option>
+                  <option value="german">German</option>
+                  <option value="japanese">Japanese</option>
+                  <option value="chinese">Chinese</option>
+                  <option value="korean">Korean</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Target Language Sentence:</label>
+                <input type="text" id="admin-sent-target" class="input-clean" value="Nous avons fini nos devoirs.">
+              </div>
+              <div class="form-group">
+                <label>English Translation:</label>
+                <input type="text" id="admin-sent-eng" class="input-clean" value="We finished our homework.">
+              </div>
+              <div class="form-group">
+                <label>Sinhala Translation:</label>
+                <input type="text" id="admin-sent-sin" class="input-clean" value="අපි අපගේ ගෙදර වැඩ අවසන් කළෙමු.">
+              </div>
+              <div class="form-group">
+                <label>Component Sequence (Comma separated):</label>
+                <input type="text" id="admin-sent-comp" class="input-clean" value="Nous, avons, fini, nos, devoirs.">
+              </div>
+              <div class="form-group">
+                <label>Level 5 Advanced Hint:</label>
+                <input type="text" id="admin-sent-hint" class="input-clean" value="Subject 'Nous' requires plural auxiliary 'avons' and past participle 'fini'.">
+              </div>
+              <div class="form-group">
+                <label>Publish Status:</label>
+                <select id="admin-sent-status" class="select-clean">
+                  <option value="Published">Published & Approved ✓</option>
+                  <option value="Draft">Draft</option>
+                  <option value="Pending">Pending Review</option>
+                </select>
+              </div>
+              <button class="btn-primary" onclick="saveAdminSentence()">Publish Sentence to Database ✓</button>
+            </div>
+
+            <!-- Preview Frame Column -->
+            <div class="preview-column">
+              <h4>Live Student Preview Frame</h4>
+              <div class="preview-frame-box">
+                <div class="sb-guide-card">
+                  <span class="badge-status">STUDENT VIEW PREVIEW</span>
+                  <h4 id="prev-eng">"We finished our homework."</h4>
+                  <p id="prev-sin" class="text-muted">Sinhala: අපි අපගේ ගෙදර වැඩ අවසන් කළෙමු.</p>
+                </div>
+                <div class="sb-drop-zone">
+                  <span class="sb-placeholder">[ Drop tiles here ]</span>
+                </div>
+                <div class="sb-tiles-container">
+                  <span class="word-tile">fini</span>
+                  <span class="word-tile">Nous</span>
+                  <span class="word-tile">devoirs.</span>
+                  <span class="word-tile">avons</span>
+                  <span class="word-tile">nos</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Content Approval Queue Table -->
+        <div class="card-box margin-top-md">
+          <h3>📋 Moderation Approval Queue</h3>
+          <table class="admin-table">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Author</th>
+                <th>Type</th>
+                <th>Language</th>
+                <th>Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>French Irregular Verbs Guide</td>
+                <td>Kasun D.</td>
+                <td>Notes</td>
+                <td>French</td>
+                <td><span class="badge-status-pending">Pending Review</span></td>
+                <td>
+                  <button class="btn-sm btn-primary" onclick="alert('Approved!')">Approve</button>
+                  <button class="btn-sm btn-danger" onclick="alert('Rejected!')">Reject</button>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>
